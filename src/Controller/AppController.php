@@ -28,7 +28,6 @@ use Cake\I18n\FrozenTime;
  */
 class AppController extends Controller
 {
-
     /**
      * Initialization hook method.
      *
