@@ -1,0 +1,21 @@
+item code,quantity,purchase rate,sales rate
+BARCODE1,1,100,130
+BARCODE3,2,200,260
+BARCODE5,3,300,390
+BARCODE6,4,400,520
+BARCODE7,5,500,650
+nbarcode1,6,600,780
+nbarcode2,7,700,910
+nbarcode3,8,800,1040
+nbarcode4,9,900,1170
+nbarcode5,10,1000,1300
+nbarcode6,11,1100,1430
+nbarcode7,12,1200,1560
+nbarcode8,13,1300,1690
+nbarcode9,14,1400,1820
+nbarcode10,15,1500,1950
+,16,1600,2080
+,17,1700,2210
+,18,1800,2340
+,19,1900,2470
+,20,2000,2600
