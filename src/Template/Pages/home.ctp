@@ -1,16 +1,16 @@
 <?php
 /**
- * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org CakePHP(tm) Project
  * @since         0.10.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
@@ -21,10 +21,8 @@ use Cake\Network\Exception\NotFoundException;
 
 $this->layout = false;
 
-if (!Configure::read('debug')) :
-    throw new NotFoundException(
-        'Please replace src/Template/Pages/home.ctp with your own version or re-enable debug mode.'
-    );
+if (!Configure::read('debug')):
+    throw new NotFoundException('Please replace src/Template/Pages/home.ctp with your own version.');
 endif;
 
 $cakeDescription = 'CakePHP: the rapid development PHP framework';
@@ -62,8 +60,8 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
             <ul>
                 <li class="bullet problem">
                     URL rewriting is not properly configured on your server.<br />
-                    1) <a target="_blank" href="https://book.cakephp.org/3.0/en/installation.html#url-rewriting">Help me configure it</a><br />
-                    2) <a target="_blank" href="https://book.cakephp.org/3.0/en/development/configuration.html#general-configuration">I don't / can't use URL rewriting</a>
+                    1) <a target="_blank" href="http://book.cakephp.org/3.0/en/installation.html#url-rewriting">Help me configure it</a><br />
+                    2) <a target="_blank" href="http://book.cakephp.org/3.0/en/development/configuration.html#general-configuration">I don't / can't use URL rewriting</a>
                 </li>
             </ul>
         </div>
@@ -75,29 +73,29 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <div class="columns large-6">
         <h4>Environment</h4>
         <ul>
-        <?php if (version_compare(PHP_VERSION, '5.6.0', '>=')) : ?>
+        <?php if (version_compare(PHP_VERSION, '5.6.0', '>=')): ?>
             <li class="bullet success">Your version of PHP is 5.6.0 or higher (detected <?= PHP_VERSION ?>).</li>
-        <?php else : ?>
+        <?php else: ?>
             <li class="bullet problem">Your version of PHP is too low. You need PHP 5.6.0 or higher to use CakePHP (detected <?= PHP_VERSION ?>).</li>
         <?php endif; ?>
 
-        <?php if (extension_loaded('mbstring')) : ?>
+        <?php if (extension_loaded('mbstring')): ?>
             <li class="bullet success">Your version of PHP has the mbstring extension loaded.</li>
-        <?php else : ?>
+        <?php else: ?>
             <li class="bullet problem">Your version of PHP does NOT have the mbstring extension loaded.</li>;
         <?php endif; ?>
 
-        <?php if (extension_loaded('openssl')) : ?>
+        <?php if (extension_loaded('openssl')): ?>
             <li class="bullet success">Your version of PHP has the openssl extension loaded.</li>
-        <?php elseif (extension_loaded('mcrypt')) : ?>
+        <?php elseif (extension_loaded('mcrypt')): ?>
             <li class="bullet success">Your version of PHP has the mcrypt extension loaded.</li>
-        <?php else : ?>
+        <?php else: ?>
             <li class="bullet problem">Your version of PHP does NOT have the openssl or mcrypt extension loaded.</li>
         <?php endif; ?>
 
-        <?php if (extension_loaded('intl')) : ?>
+        <?php if (extension_loaded('intl')): ?>
             <li class="bullet success">Your version of PHP has the intl extension loaded.</li>
-        <?php else : ?>
+        <?php else: ?>
             <li class="bullet problem">Your version of PHP does NOT have the intl extension loaded.</li>
         <?php endif; ?>
         </ul>
@@ -105,22 +103,22 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <div class="columns large-6">
         <h4>Filesystem</h4>
         <ul>
-        <?php if (is_writable(TMP)) : ?>
+        <?php if (is_writable(TMP)): ?>
             <li class="bullet success">Your tmp directory is writable.</li>
-        <?php else : ?>
+        <?php else: ?>
             <li class="bullet problem">Your tmp directory is NOT writable.</li>
         <?php endif; ?>
 
-        <?php if (is_writable(LOGS)) : ?>
+        <?php if (is_writable(LOGS)): ?>
             <li class="bullet success">Your logs directory is writable.</li>
-        <?php else : ?>
+        <?php else: ?>
             <li class="bullet problem">Your logs directory is NOT writable.</li>
         <?php endif; ?>
 
-        <?php $settings = Cache::getConfig('_cake_core_'); ?>
-        <?php if (!empty($settings)) : ?>
+        <?php $settings = Cache::config('_cake_core_'); ?>
+        <?php if (!empty($settings)): ?>
             <li class="bullet success">The <em><?= $settings['className'] ?>Engine</em> is being used for core caching. To change the config edit config/app.php</li>
-        <?php else : ?>
+        <?php else: ?>
             <li class="bullet problem">Your cache is NOT working. Please check the settings in config/app.php</li>
         <?php endif; ?>
         </ul>
@@ -138,18 +136,18 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
         } catch (Exception $connectionError) {
             $connected = false;
             $errorMsg = $connectionError->getMessage();
-            if (method_exists($connectionError, 'getAttributes')) :
+            if (method_exists($connectionError, 'getAttributes')):
                 $attributes = $connectionError->getAttributes();
-                if (isset($errorMsg['message'])) :
+                if (isset($errorMsg['message'])):
                     $errorMsg .= '<br />' . $attributes['message'];
                 endif;
             endif;
         }
         ?>
         <ul>
-        <?php if ($connected) : ?>
+        <?php if ($connected): ?>
             <li class="bullet success">CakePHP is able to connect to the database.</li>
-        <?php else : ?>
+        <?php else: ?>
             <li class="bullet problem">CakePHP is NOT able to connect to the database.<br /><?= $errorMsg ?></li>
         <?php endif; ?>
         </ul>
@@ -157,9 +155,9 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <div class="columns large-6">
         <h4>DebugKit</h4>
         <ul>
-        <?php if (Plugin::loaded('DebugKit')) : ?>
+        <?php if (Plugin::loaded('DebugKit')): ?>
             <li class="bullet success">DebugKit is loaded.</li>
-        <?php else : ?>
+        <?php else: ?>
             <li class="bullet problem">DebugKit is NOT loaded. You need to either install pdo_sqlite, or define the "debug_kit" connection name.</li>
         <?php endif; ?>
         </ul>
@@ -178,9 +176,9 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <div class="columns large-6">
         <h3>Getting Started</h3>
         <ul>
-            <li class="bullet book"><a target="_blank" href="https://book.cakephp.org/3.0/en/">CakePHP 3.0 Docs</a></li>
-            <li class="bullet book"><a target="_blank" href="https://book.cakephp.org/3.0/en/tutorials-and-examples/bookmarks/intro.html">The 15 min Bookmarker Tutorial</a></li>
-            <li class="bullet book"><a target="_blank" href="https://book.cakephp.org/3.0/en/tutorials-and-examples/blog/blog.html">The 15 min Blog Tutorial</a></li>
+            <li class="bullet book"><a target="_blank" href="http://book.cakephp.org/3.0/en/">CakePHP 3.0 Docs</a></li>
+            <li class="bullet book"><a target="_blank" href="http://book.cakephp.org/3.0/en/tutorials-and-examples/bookmarks/intro.html">The 15 min Bookmarker Tutorial</a></li>
+            <li class="bullet book"><a target="_blank" href="http://book.cakephp.org/3.0/en/tutorials-and-examples/blog/blog.html">The 15 min Blog Tutorial</a></li>
         </ul>
         <p>
     </div>
@@ -225,19 +223,19 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
         <h3>Docs and Downloads</h3>
         <ul>
             <li class="bullet cutlery">
-                <a href="https://api.cakephp.org/3.0/">CakePHP API</a>
+                <a href="http://api.cakephp.org/3.0/">CakePHP API</a>
                 <ul><li>Quick Reference</li></ul>
             </li>
             <li class="bullet cutlery">
-                <a href="https://book.cakephp.org/3.0/en/">CakePHP Documentation</a>
+                <a href="http://book.cakephp.org/3.0/en/">CakePHP Documentation</a>
                 <ul><li>Your Rapid Development Cookbook</li></ul>
             </li>
             <li class="bullet cutlery">
-                <a href="https://bakery.cakephp.org">The Bakery</a>
+                <a href="http://bakery.cakephp.org">The Bakery</a>
                 <ul><li>Everything CakePHP</li></ul>
             </li>
             <li class="bullet cutlery">
-                <a href="https://plugins.cakephp.org">CakePHP plugins repo</a>
+                <a href="http://plugins.cakephp.org">CakePHP plugins repo</a>
                 <ul><li>A comprehensive list of all CakePHP plugins created by the community</li></ul>
             </li>
             <li class="bullet cutlery">
@@ -249,7 +247,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
                 <ul><li>A curated list of amazingly awesome CakePHP plugins, resources and shiny things.</li></ul>
             </li>
             <li class="bullet cutlery">
-                <a href="https://www.cakephp.org">CakePHP</a>
+                <a href="http://www.cakephp.org">CakePHP</a>
                 <ul><li>The Rapid Development Framework</li></ul>
             </li>
         </ul>
@@ -259,15 +257,15 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
         <h3>Training and Certification</h3>
         <ul>
             <li class="bullet cutlery">
-                <a href="https://cakefoundation.org/">Cake Software Foundation</a>
+                <a href="http://cakefoundation.org/">Cake Software Foundation</a>
                 <ul><li>Promoting development related to CakePHP</li></ul>
             </li>
             <li class="bullet cutlery">
-                <a href="https://training.cakephp.org/">CakePHP Training</a>
+                <a href="http://training.cakephp.org/">CakePHP Training</a>
                 <ul><li>Learn to use the CakePHP framework</li></ul>
             </li>
             <li class="bullet cutlery">
-                <a href="https://certification.cakephp.org/">CakePHP Certification</a>
+                <a href="http://certification.cakephp.org/">CakePHP Certification</a>
                 <ul><li>Become a certified CakePHP developer</li></ul>
             </li>
         </ul>
